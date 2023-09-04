@@ -1,0 +1,81 @@
+{% extends 'admin/base.html' %}
+{% load static %}
+
+{% block content %}
+        <!--**********************************
+            Sidebar end
+        ***********************************-->
+
+        <!--**********************************
+            Content body start
+        ***********************************-->
+        <div class="content-body">
+
+            <div class="row page-titles mx-0">
+                <div class="col p-md-0">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="javascript:void(0)">Dashboard</a></li>
+                        <li class="breadcrumb-item active"><a href="javascript:void(0)">Home</a></li>
+                    </ol>
+                </div>
+            </div>
+            <!-- row -->
+
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h2  style="text-align:center;color:red" >Family </h2>
+                                <div class="table-responsive">
+                                    <table class="table table-striped table-bordered zero-configuration">
+                                        <thead>
+                                            <tr>
+                                                <th><h4 >House Name</h4></th>
+                                                <th><h4>Head of Family</h4></th>
+                                                <th><h4>View Family Details</h4></th>
+
+                                                <th><h4>View Members</h4></th>
+
+                                                <th><h4>Add Members Information</h4></th>
+
+                                                <th><h4>Add Deceased Persons</h4></th>
+                                                <th><h4>Payment</h4></th>
+
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        {% for i in stu %}
+                                            <tr>
+                                                <td><h5>{{i.house_name}}</h5></td>
+                                                <td><h5>{{i.head_of_family}}</h5></td>
+                                                <td><button type="button" class="btn mb-1 btn-success"><a href="{% url 'view_family_details' i.id %}" >View Family Details</a></button></td>
+
+                                                <td><button type="button" class="btn mb-1 btn-success"><a href="{% url 'view_members' i.id %}" >View Members</a></button></td>
+
+                                                <td><button type="button" class="btn mb-1 btn-success"><a href="{% url 'Personal_details_one' i.id %}"  >Add Members Information</a></button></td>
+
+                                                <td><button type="button" class="btn mb-1 btn-success"><a href="{% url 'add_deceased_persons' i.id %}"  >Add Death Details</a></button></td>
+                                                <td><button type="button" class="btn mb-1 btn-success"><a href="{% url 'monthly_payment' i.id %}" >Payment</a></button></td>
+
+                                            </tr>
+{% endfor %}
+                                        </tfoot>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- #/ container -->
+        </div>
+        <!--**********************************
+            Content body end
+        ***********************************-->
+        
+        
+        <!--**********************************
+            Footer start
+        ***********************************-->
+{% endblock %}
